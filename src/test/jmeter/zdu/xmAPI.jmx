@@ -1,0 +1,2091 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.8" jmeter="2.13 r1665067">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="ZDU-xmAPI" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Environment Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="host" elementType="Argument">
+            <stringProp name="Argument.name">host</stringProp>
+            <stringProp name="Argument.value">${__property(host,,benchmark.staging.tst.xmatters.com)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="port" elementType="Argument">
+            <stringProp name="Argument.name">port</stringProp>
+            <stringProp name="Argument.value">${__property(port,,443)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="username" elementType="Argument">
+            <stringProp name="Argument.name">username</stringProp>
+            <stringProp name="Argument.value">${__property(username,,admin)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="password" elementType="Argument">
+            <stringProp name="Argument.name">password</stringProp>
+            <stringProp name="Argument.value">${__property(password,,complex)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="timeout_ms" elementType="Argument">
+            <stringProp name="Argument.name">timeout_ms</stringProp>
+            <stringProp name="Argument.value">${__property(timeout_ms,,20000)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="protocol" elementType="Argument">
+            <stringProp name="Argument.name">protocol</stringProp>
+            <stringProp name="Argument.value">${__property(protocol,,https)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="basepath" elementType="Argument">
+            <stringProp name="Argument.name">basepath</stringProp>
+            <stringProp name="Argument.value">${__property(basepath,,api/xm)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="apiversion" elementType="Argument">
+            <stringProp name="Argument.name">apiversion</stringProp>
+            <stringProp name="Argument.value">${__property(apiversion,,1)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="defaultSiteData" elementType="Argument">
+            <stringProp name="Argument.name">defaultSiteData</stringProp>
+            <stringProp name="Argument.value">${__property(defaultSiteData,,db6404b0-f973-4687-8b6e-93cf4e8eed9e)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="testuserid" elementType="Argument">
+            <stringProp name="Argument.name">testuserid</stringProp>
+            <stringProp name="Argument.value">${__property(testuserid,,f3b05355-530b-4d8f-b778-6c8367e73ff6)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="engineName" elementType="Argument">
+            <stringProp name="Argument.name">engineName</stringProp>
+            <stringProp name="Argument.value">${__property(engineName,,Major Incident Notification Suite)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="formName" elementType="Argument">
+            <stringProp name="Argument.name">formName</stringProp>
+            <stringProp name="Argument.value">${__property(formName,,Major Incident Notifications)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+        <collectionProp name="AuthManager.auth_list">
+          <elementProp name="" elementType="Authorization">
+            <stringProp name="Authorization.url">${protocol}://${host}</stringProp>
+            <stringProp name="Authorization.username">${username}</stringProp>
+            <stringProp name="Authorization.password">${password}</stringProp>
+            <stringProp name="Authorization.domain"></stringProp>
+            <stringProp name="Authorization.realm"></stringProp>
+          </elementProp>
+        </collectionProp>
+      </AuthManager>
+      <hashTree/>
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments"/>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">${host}</stringProp>
+        <stringProp name="HTTPSampler.port">${port}</stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout">${timeout_ms}</stringProp>
+        <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+        <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+        <stringProp name="HTTPSampler.path"></stringProp>
+        <stringProp name="HTTPSampler.implementation">HttpClient3.1</stringProp>
+        <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+      </ConfigTestElement>
+      <hashTree/>
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+        <collectionProp name="HeaderManager.headers">
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">content-type</stringProp>
+            <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+          </elementProp>
+        </collectionProp>
+      </HeaderManager>
+      <hashTree/>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="load Group Names" enabled="true">
+        <stringProp name="filename">../resources/groupNames.csv</stringProp>
+        <stringProp name="fileEncoding"></stringProp>
+        <stringProp name="variableNames">groupName</stringProp>
+        <stringProp name="delimiter">,</stringProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load First Names" enabled="true">
+        <stringProp name="delimiter">,</stringProp>
+        <stringProp name="fileEncoding"></stringProp>
+        <stringProp name="filename">../resources/firstNames.csv</stringProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="variableNames">firstName</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load Last Names" enabled="true">
+        <stringProp name="filename">../resources/lastNames.csv</stringProp>
+        <stringProp name="fileEncoding"></stringProp>
+        <stringProp name="variableNames">lastName</stringProp>
+        <stringProp name="delimiter">,</stringProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="GET Sites by uuid" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1460980645000</longProp>
+        <longProp name="ThreadGroup.end_time">1460980645000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET Sites by uuid" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/${basepath}/${apiversion}/sites/${defaultSiteData}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - code 200" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="JSON Assertion on default site" enabled="true">
+            <stringProp name="BeanShellAssertion.query">import com.eclipsesource.json.*;
+import org.skyscreamer.jsonassert.*;
+
+// Grab output JSON and print out as a string
+String jsonString = prev.getResponseDataAsString();
+JsonObject jsonObjResult = Json.parse(jsonString).asObject();
+String jsonActualResultString = jsonObjResult.toString();
+log.info(&quot;Here is the output JSON: &quot; + jsonActualResultString);
+
+// Build the expected &quot;selfLink&quot; JSON object
+JsonObject selfLinkObj = new JsonObject();
+selfLinkObj.add(&quot;self&quot;, &quot;/${basepath}/${apiversion}/sites/${defaultSiteData}&quot;);
+
+//Build the final expected JSON object
+JsonObject expectedJsonObj = new JsonObject();
+expectedJsonObj.add(&quot;id&quot;, &quot;${defaultSiteData}&quot;);
+expectedJsonObj.add(&quot;links&quot;, selfLinkObj);
+expectedJsonObj.add(&quot;name&quot;, &quot;Default Site&quot;);
+expectedJsonObj.add(&quot;status&quot;, &quot;ACTIVE&quot;);
+expectedJsonObj.add(&quot;externallyOwned&quot;, false);
+expectedJsonObj.add(&quot;language&quot;, &quot;en&quot;);
+expectedJsonObj.add(&quot;timezone&quot;, &quot;US/Eastern&quot;);
+expectedJsonObj.add(&quot;address1&quot;, &quot;&quot;);
+expectedJsonObj.add(&quot;address2&quot;, &quot;&quot;);
+expectedJsonObj.add(&quot;city&quot;, &quot;&quot;);
+expectedJsonObj.add(&quot;country&quot;, &quot;USA&quot;);
+expectedJsonObj.add(&quot;postalCode&quot;, &quot;&quot;);
+expectedJsonObj.add(&quot;state&quot;, &quot;&quot;);
+log.info(&quot;Here is the expecteded JSON: &quot; + expectedJsonObj.toString());
+
+// Check for object equivalence
+JSONCompareResult compareResult = JSONCompare.compareJSON(expectedJsonObj.toString(), jsonActualResultString, JSONCompareMode.NON_EXTENSIBLE);
+if (compareResult.failed()) {
+	Failure = true;
+	FailureMessage = &quot;The result JSON does not match the expected JSON.\n&quot; + compareResult.getMessage();
+}</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="GET default site by Name" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1460981059000</longProp>
+        <longProp name="ThreadGroup.end_time">1460981059000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET default site by Name" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/${basepath}/${apiversion}/sites/Default Site</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - code 200" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="JSON Assertion on default site" enabled="true">
+            <stringProp name="BeanShellAssertion.query">import com.eclipsesource.json.*;
+import org.skyscreamer.jsonassert.*;
+
+// Grab output JSON and print out as a string
+String jsonString = prev.getResponseDataAsString();
+JsonObject jsonObjResult = Json.parse(jsonString).asObject();
+String jsonActualResultString = jsonObjResult.toString();
+log.info(&quot;Here is the output JSON: &quot; + jsonActualResultString);
+
+// Build the expected &quot;selfLink&quot; JSON object
+JsonObject selfLinkObj = new JsonObject();
+selfLinkObj.add(&quot;self&quot;, &quot;/${basepath}/${apiversion}/sites/${defaultSiteData}&quot;);
+
+//Build the final expected JSON object
+JsonObject expectedJsonObj = new JsonObject();
+expectedJsonObj.add(&quot;id&quot;, &quot;${defaultSiteData}&quot;);
+expectedJsonObj.add(&quot;links&quot;, selfLinkObj);
+expectedJsonObj.add(&quot;name&quot;, &quot;Default Site&quot;);
+expectedJsonObj.add(&quot;status&quot;, &quot;ACTIVE&quot;);
+expectedJsonObj.add(&quot;externallyOwned&quot;, false);
+expectedJsonObj.add(&quot;language&quot;, &quot;en&quot;);
+expectedJsonObj.add(&quot;timezone&quot;, &quot;US/Eastern&quot;);
+expectedJsonObj.add(&quot;address1&quot;, &quot;&quot;);
+expectedJsonObj.add(&quot;address2&quot;, &quot;&quot;);
+expectedJsonObj.add(&quot;city&quot;, &quot;&quot;);
+expectedJsonObj.add(&quot;country&quot;, &quot;USA&quot;);
+expectedJsonObj.add(&quot;postalCode&quot;, &quot;&quot;);
+expectedJsonObj.add(&quot;state&quot;, &quot;&quot;);
+log.info(&quot;Here is the expecteded JSON: &quot; + expectedJsonObj.toString());
+
+// Check for object equivalence
+JSONCompareResult compareResult = JSONCompare.compareJSON(expectedJsonObj.toString(), jsonActualResultString, JSONCompareMode.NON_EXTENSIBLE);
+if (compareResult.failed()) {
+	Failure = true;
+	FailureMessage = &quot;The result JSON does not match the expected JSON.\n&quot; + compareResult.getMessage();
+}</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Create/Update/Delete Person" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1460981837000</longProp>
+        <longProp name="ThreadGroup.end_time">1460981837000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DELETE created person" enabled="false">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/${basepath}/${apiversion}/people/${personUUID}</stringProp>
+          <stringProp name="HTTPSampler.method">DELETE</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - code 200" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+            <stringProp name="BeanShellAssertion.query">import com.eclipsesource.json.*;
+import org.skyscreamer.jsonassert.*;
+
+String jsonString = prev.getResponseDataAsString();
+String storedId = vars.get(&quot;personUUID&quot;);
+String siteInfo = vars.get(&quot;defaultSiteData&quot;);
+String firstName = vars.get(&quot;firstName&quot;) + &quot;Edit&quot;;
+String lastName = &quot;SonOf&quot; + vars.get(&quot;lastName&quot;);
+String targetName = vars.get(&quot;firstName&quot;) + vars.get(&quot;lastName&quot;);
+
+// Grab output JSON and print out as a string
+JsonObject resultPerson = Json.parse(jsonString).asObject();
+String resultText = resultPerson.toString();
+log.info(&quot;Here is the output JSON: &quot; + resultText);
+
+// Build the expected JSON and print it out as a string
+// First build the expectedSite object
+
+String siteLink = &quot;/api/xm/1/sites/&quot; + siteInfo;
+JsonObject siteLinkElement = new JsonObject();
+siteLinkElement.add(&quot;self&quot;, siteLink);
+
+JsonObject expectedSite = new JsonObject();
+expectedSite.add(&quot;id&quot;, siteInfo);
+expectedSite.add(&quot;links&quot;, siteLinkElement);
+
+String selfLink = &quot;/api/xm/1/people/&quot; + storedId;
+JsonObject linksElement = new JsonObject();
+linksElement.add(&quot;self&quot;, selfLink);
+
+JsonObject expectedPerson = new JsonObject();
+expectedPerson.add(&quot;id&quot;, storedId);
+expectedPerson.add(&quot;targetName&quot;, targetName);
+expectedPerson.add(&quot;recipientType&quot;, &quot;PERSON&quot;);
+expectedPerson.add(&quot;status&quot;, &quot;ACTIVE&quot;);
+expectedPerson.add(&quot;externallyOwned&quot;, false);
+expectedPerson.add(&quot;links&quot;, linksElement);
+expectedPerson.add(&quot;firstName&quot;, firstName);
+expectedPerson.add(&quot;lastName&quot;, lastName);
+expectedPerson.add(&quot;language&quot;, &quot;en&quot;);
+expectedPerson.add(&quot;timezone&quot;, &quot;Asia/Calcutta&quot;);
+expectedPerson.add(&quot;webLogin&quot;, targetName);
+expectedPerson.add(&quot;site&quot;, expectedSite);
+
+
+log.info(&quot;Here is the expect JSON: &quot; + expectedPerson.toString());
+
+/*
+// Check for object equivalence
+if (!expectedPerson.equals(resultPerson)) {
+	Failure = true;
+	FailureMessage = &quot;The result JSON does not match the expected JSON&quot;;	
+}*/
+JSONCompareResult result = JSONCompare.compareJSON(expectedPerson.toString(), resultText, JSONCompareMode.NON_EXTENSIBLE);
+if (result.failed()) {
+	Failure = true;
+	FailureMessage = &quot;The result JSON does not match the expected JSON.\n&quot; + result.getMessage();
+}</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Delete Deleted Person" enabled="false">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/${basepath}/${apiversion}/people/${personUUID}</stringProp>
+          <stringProp name="HTTPSampler.method">DELETE</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49590">204</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="ADD/Delete Device" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1460983728000</longProp>
+        <longProp name="ThreadGroup.end_time">1460983728000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Work Email" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;deviceType&quot;: &quot;EMAIL&quot;,&#xd;
+    &quot;name&quot;:&quot;Work Email&quot;,&#xd;
+    &quot;emailAddress&quot;: &quot; noob_work@xmatters.com &quot;,&#xd;
+    &quot;provider&quot;: {&#xd;
+    		&quot;id&quot;:&quot; (x)matters Email Gateway &quot;&#xd;
+    },&#xd;
+    &quot;owner&quot;: {&#xd;
+     &quot;id&quot;: &quot;${testuserid}&quot;&#xd;
+    },&#xd;
+    &quot;sequence&quot;: 1&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/${basepath}/${apiversion}/devices</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - code 201" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49587">201</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+            <stringProp name="BeanShellAssertion.query">import com.eclipsesource.json.*;
+import org.skyscreamer.jsonassert.*;
+
+String jsonString = prev.getResponseDataAsString();
+String deviceUuid = vars.get(&quot;deviceUuid&quot;);
+String ownerUuid = vars.get(&quot;ownerUuid&quot;);
+
+log.info(&quot;Starting initial POST assertions&quot;);
+
+// Grab output JSON and print out as a string
+JsonObject jsonObjResult = Json.parse(jsonString).asObject();
+String jsonActualResultString = jsonObjResult.toString();
+log.info(&quot;Here is the output JSON: &quot; + jsonActualResultString);
+
+// Build the expected &quot;ownerlink&quot; JSON object
+JsonObject ownerLinkJsonObj = new JsonObject();
+ownerLinkJsonObj.add(&quot;self&quot;, &quot;/api/xm/1/people/&quot;+ ownerUuid);
+
+// Build the expected &quot;owner&quot; JSON object
+JsonObject ownerJsonObj = new JsonObject();
+ownerJsonObj.add(&quot;id&quot;, ownerUuid);
+ownerJsonObj.add(&quot;links&quot;, ownerLinkJsonObj);
+
+// Build the expected &quot;selfLink&quot; JSON object
+JsonObject selfLinkJsonObj = new JsonObject();
+selfLinkJsonObj.add(&quot;self&quot;, &quot;/api/xm/1/devices/&quot;+ deviceUuid);
+
+// Build the expected &quot;provider&quot; JSON object
+JsonObject providerJsonObj = new JsonObject();
+providerJsonObj.add(&quot;id&quot;, &quot;(x)matters Email Gateway&quot;);
+
+//Build the final expected JSON object
+JsonObject expectedJsonObj = new JsonObject();
+expectedJsonObj.add(&quot;id&quot;, deviceUuid);
+expectedJsonObj.add(&quot;name&quot;, &quot;Work Email&quot;);
+expectedJsonObj.add(&quot;emailAddress&quot;, &quot;noob_work@xmatters.com&quot;);
+expectedJsonObj.add(&quot;targetName&quot;, &quot;testuser|Work Email&quot;);
+expectedJsonObj.add(&quot;deviceType&quot;, &quot;EMAIL&quot;);
+expectedJsonObj.add(&quot;description&quot;, &quot;noob_work@xmatters.com&quot;);
+expectedJsonObj.add(&quot;testStatus&quot;, &quot;UNTESTED&quot;);
+expectedJsonObj.add(&quot;externallyOwned&quot;, false);
+expectedJsonObj.add(&quot;defaultDevice&quot;, false);
+expectedJsonObj.add(&quot;priorityThreshold&quot;, &quot;LOW&quot;);
+expectedJsonObj.add(&quot;sequence&quot;, 1);
+expectedJsonObj.add(&quot;delay&quot;, 0);
+expectedJsonObj.add(&quot;owner&quot;, ownerJsonObj);
+expectedJsonObj.add(&quot;links&quot;, selfLinkJsonObj);
+expectedJsonObj.add(&quot;recipientType&quot;, &quot;DEVICE&quot;);
+expectedJsonObj.add(&quot;status&quot;, &quot;ACTIVE&quot;);
+expectedJsonObj.add(&quot;provider&quot;, providerJsonObj);
+log.info(&quot;Here is the expect JSON: &quot; + expectedJsonObj.toString());
+
+// Check for object equivalence
+JSONCompareResult compareResult = JSONCompare.compareJSON(expectedJsonObj.toString(), jsonActualResultString, JSONCompareMode.NON_EXTENSIBLE);
+if (compareResult.failed()) {
+	Failure = true;
+	FailureMessage = &quot;The result JSON does not match the expected JSON.\n&quot; + compareResult.getMessage();
+}
+
+${__setProperty(workEmailDeviceUuid, ${deviceUuid})};</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract Owner UUID" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">ownerUuid</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;id&quot;:&quot;(.+?)&quot;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">&lt;owner_uuid&gt;</stringProp>
+            <stringProp name="RegexExtractor.match_number">2</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract Device UUID" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">deviceUuid</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;id&quot;:&quot;(.+?)&quot;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">&lt;device_uuid&gt;</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DELETE Work Email" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${basepath}/${apiversion}/devices/${deviceUuid}</stringProp>
+          <stringProp name="HTTPSampler.method">DELETE</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - code 200" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+            <stringProp name="BeanShellAssertion.query">import com.eclipsesource.json.*;
+import org.skyscreamer.jsonassert.*;
+
+String jsonString = prev.getResponseDataAsString();
+String deviceUuid = vars.get(&quot;deviceUuid&quot;);
+String ownerUuid = vars.get(&quot;ownerUuid&quot;);
+
+log.info(&quot;Starting initial POST assertions&quot;);
+
+// Grab output JSON and print out as a string
+JsonObject jsonObjResult = Json.parse(jsonString).asObject();
+String jsonActualResultString = jsonObjResult.toString();
+log.info(&quot;Here is the output JSON: &quot; + jsonActualResultString);
+
+// Build the expected &quot;ownerlink&quot; JSON object
+JsonObject ownerLinkJsonObj = new JsonObject();
+ownerLinkJsonObj.add(&quot;self&quot;, &quot;/api/xm/1/people/&quot;+ ownerUuid);
+
+// Build the expected &quot;owner&quot; JSON object
+JsonObject ownerJsonObj = new JsonObject();
+ownerJsonObj.add(&quot;id&quot;, ownerUuid);
+ownerJsonObj.add(&quot;links&quot;, ownerLinkJsonObj);
+
+// Build the expected &quot;selfLink&quot; JSON object
+JsonObject selfLinkJsonObj = new JsonObject();
+selfLinkJsonObj.add(&quot;self&quot;, &quot;/api/xm/1/devices/&quot;+ deviceUuid);
+
+// Build the expected &quot;provider&quot; JSON object
+JsonObject providerJsonObj = new JsonObject();
+providerJsonObj.add(&quot;id&quot;, &quot;(x)matters Email Gateway&quot;);
+
+//Build the final expected JSON object
+JsonObject expectedJsonObj = new JsonObject();
+expectedJsonObj.add(&quot;id&quot;, deviceUuid);
+expectedJsonObj.add(&quot;name&quot;, &quot;Work Email&quot;);
+expectedJsonObj.add(&quot;emailAddress&quot;, &quot;noob_work@xmatters.com&quot;);
+expectedJsonObj.add(&quot;targetName&quot;, &quot;testuser|Work Email&quot;);
+expectedJsonObj.add(&quot;deviceType&quot;, &quot;EMAIL&quot;);
+expectedJsonObj.add(&quot;description&quot;, &quot;noob_work@xmatters.com&quot;);
+expectedJsonObj.add(&quot;testStatus&quot;, &quot;UNTESTED&quot;);
+expectedJsonObj.add(&quot;externallyOwned&quot;, false);
+expectedJsonObj.add(&quot;defaultDevice&quot;, false);
+expectedJsonObj.add(&quot;priorityThreshold&quot;, &quot;LOW&quot;);
+expectedJsonObj.add(&quot;sequence&quot;, 1);
+expectedJsonObj.add(&quot;delay&quot;, 0);
+expectedJsonObj.add(&quot;owner&quot;, ownerJsonObj);
+expectedJsonObj.add(&quot;links&quot;, selfLinkJsonObj);
+expectedJsonObj.add(&quot;recipientType&quot;, &quot;DEVICE&quot;);
+expectedJsonObj.add(&quot;status&quot;, &quot;ACTIVE&quot;);
+expectedJsonObj.add(&quot;provider&quot;, providerJsonObj);
+log.info(&quot;Here is the expect JSON: &quot; + expectedJsonObj.toString());
+
+// Check for object equivalence
+JSONCompareResult compareResult = JSONCompare.compareJSON(expectedJsonObj.toString(), jsonActualResultString, JSONCompareMode.NON_EXTENSIBLE);
+if (compareResult.failed()) {
+	Failure = true;
+	FailureMessage = &quot;The result JSON does not match the expected JSON.\n&quot; + compareResult.getMessage();
+}</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Voice device" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;deviceType&quot;:&quot;VOICE&quot;,&#xd;
+    &quot;name&quot;:&quot;Work Phone&quot;,&#xd;
+    &quot;phoneNumber&quot;: &quot;+16045581021&quot;,&#xd;
+    &quot;provider&quot;: {&#xd;
+    		&quot;id&quot;:&quot; (x)matters Voice Gateway &quot;&#xd;
+    },&#xd;
+    &quot;owner&quot;: {&#xd;
+        &quot;id&quot;:&quot;${testuserid}&quot;&#xd;
+    },&#xd;
+    &quot;sequence&quot;: 1&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${basepath}/${apiversion}/devices</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - code 201" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49587">201</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract Owner UUID" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">ownerUuid</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;id&quot;:&quot;(.+?)&quot;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">&lt;owner_id&gt;</stringProp>
+            <stringProp name="RegexExtractor.match_number">2</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract Device UUID" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">deviceUuid</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;id&quot;:&quot;(.+?)&quot;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">&lt;device_uuid&gt;</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+            <stringProp name="BeanShellAssertion.query">import com.eclipsesource.json.*;
+import org.skyscreamer.jsonassert.*;
+
+String jsonString = prev.getResponseDataAsString();
+String deviceUuid = vars.get(&quot;deviceUuid&quot;);
+String ownerUuid = vars.get(&quot;ownerUuid&quot;);
+
+log.info(&quot;Starting initial POST assertions&quot;);
+
+// Grab output JSON and print out as a string
+JsonObject jsonObjResult = Json.parse(jsonString).asObject();
+String jsonActualResultString = jsonObjResult.toString();
+log.info(&quot;Here is the output JSON: &quot; + jsonActualResultString);
+
+// Build the expected &quot;ownerlink&quot; JSON object
+JsonObject ownerLinkJsonObj = new JsonObject();
+ownerLinkJsonObj.add(&quot;self&quot;, &quot;/api/xm/1/people/&quot;+ ownerUuid);
+
+// Build the expected &quot;owner&quot; JSON object
+JsonObject ownerJsonObj = new JsonObject();
+ownerJsonObj.add(&quot;id&quot;, ownerUuid);
+ownerJsonObj.add(&quot;links&quot;, ownerLinkJsonObj);
+
+// Build the expected &quot;selfLink&quot; JSON object
+JsonObject selfLinkJsonObj = new JsonObject();
+selfLinkJsonObj.add(&quot;self&quot;, &quot;/api/xm/1/devices/&quot;+ deviceUuid);
+
+// Build the expected &quot;provider&quot; JSON object
+JsonObject providerJsonObj = new JsonObject();
+providerJsonObj.add(&quot;id&quot;, &quot;(x)matters Voice Gateway&quot;);
+
+//Build the final expected JSON object
+JsonObject expectedJsonObj = new JsonObject();
+expectedJsonObj.add(&quot;id&quot;, deviceUuid);
+expectedJsonObj.add(&quot;name&quot;, &quot;Work Phone&quot;);
+expectedJsonObj.add(&quot;phoneNumber&quot;, &quot;+16045581021&quot;);
+expectedJsonObj.add(&quot;targetName&quot;, &quot;testuser|Work Phone&quot;);
+expectedJsonObj.add(&quot;deviceType&quot;, &quot;VOICE&quot;);
+expectedJsonObj.add(&quot;description&quot;, &quot;(604)5581021&quot;);
+expectedJsonObj.add(&quot;testStatus&quot;, &quot;UNTESTED&quot;);
+expectedJsonObj.add(&quot;externallyOwned&quot;, false);
+expectedJsonObj.add(&quot;defaultDevice&quot;, false);
+expectedJsonObj.add(&quot;priorityThreshold&quot;, &quot;LOW&quot;);
+expectedJsonObj.add(&quot;sequence&quot;, 1);
+expectedJsonObj.add(&quot;delay&quot;, 0);
+expectedJsonObj.add(&quot;owner&quot;, ownerJsonObj);
+expectedJsonObj.add(&quot;links&quot;, selfLinkJsonObj);
+expectedJsonObj.add(&quot;recipientType&quot;, &quot;DEVICE&quot;);
+expectedJsonObj.add(&quot;status&quot;, &quot;ACTIVE&quot;);
+expectedJsonObj.add(&quot;provider&quot;, providerJsonObj);
+log.info(&quot;Here is the expect JSON: &quot; + expectedJsonObj.toString());
+
+// Check for object equivalence
+JSONCompareResult compareResult = JSONCompare.compareJSON(expectedJsonObj.toString(), jsonActualResultString, JSONCompareMode.NON_EXTENSIBLE);
+if (compareResult.failed()) {
+	Failure = true;
+	FailureMessage = &quot;The result JSON does not match the expected JSON.\n&quot; + compareResult.getMessage();
+}
+
+${__setProperty(voiceDeviceUuid, ${deviceUuid})};</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DELETE Voice device" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${basepath}/${apiversion}/devices/${deviceUuid}</stringProp>
+          <stringProp name="HTTPSampler.method">DELETE</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - code 200" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+            <stringProp name="BeanShellAssertion.query">import com.eclipsesource.json.*;
+import org.skyscreamer.jsonassert.*;
+
+String jsonString = prev.getResponseDataAsString();
+String deviceUuid = vars.get(&quot;deviceUuid&quot;);
+String ownerUuid = vars.get(&quot;ownerUuid&quot;);
+
+log.info(&quot;Starting initial POST assertions&quot;);
+
+// Grab output JSON and print out as a string
+JsonObject jsonObjResult = Json.parse(jsonString).asObject();
+String jsonActualResultString = jsonObjResult.toString();
+log.info(&quot;Here is the output JSON: &quot; + jsonActualResultString);
+
+// Build the expected &quot;ownerlink&quot; JSON object
+JsonObject ownerLinkJsonObj = new JsonObject();
+ownerLinkJsonObj.add(&quot;self&quot;, &quot;/api/xm/1/people/&quot;+ ownerUuid);
+
+// Build the expected &quot;owner&quot; JSON object
+JsonObject ownerJsonObj = new JsonObject();
+ownerJsonObj.add(&quot;id&quot;, ownerUuid);
+ownerJsonObj.add(&quot;links&quot;, ownerLinkJsonObj);
+
+// Build the expected &quot;selfLink&quot; JSON object
+JsonObject selfLinkJsonObj = new JsonObject();
+selfLinkJsonObj.add(&quot;self&quot;, &quot;/api/xm/1/devices/&quot;+ deviceUuid);
+
+// Build the expected &quot;provider&quot; JSON object
+JsonObject providerJsonObj = new JsonObject();
+providerJsonObj.add(&quot;id&quot;, &quot;(x)matters Voice Gateway&quot;);
+
+//Build the final expected JSON object
+JsonObject expectedJsonObj = new JsonObject();
+expectedJsonObj.add(&quot;id&quot;, deviceUuid);
+expectedJsonObj.add(&quot;name&quot;, &quot;Work Phone&quot;);
+expectedJsonObj.add(&quot;phoneNumber&quot;, &quot;+16045581021&quot;);
+expectedJsonObj.add(&quot;targetName&quot;, &quot;testuser|Work Phone&quot;);
+expectedJsonObj.add(&quot;deviceType&quot;, &quot;VOICE&quot;);
+expectedJsonObj.add(&quot;description&quot;, &quot;(604)5581021&quot;);
+expectedJsonObj.add(&quot;testStatus&quot;, &quot;UNTESTED&quot;);
+expectedJsonObj.add(&quot;externallyOwned&quot;, false);
+expectedJsonObj.add(&quot;defaultDevice&quot;, false);
+expectedJsonObj.add(&quot;priorityThreshold&quot;, &quot;LOW&quot;);
+expectedJsonObj.add(&quot;sequence&quot;, 1);
+expectedJsonObj.add(&quot;delay&quot;, 0);
+expectedJsonObj.add(&quot;owner&quot;, ownerJsonObj);
+expectedJsonObj.add(&quot;links&quot;, selfLinkJsonObj);
+expectedJsonObj.add(&quot;recipientType&quot;, &quot;DEVICE&quot;);
+expectedJsonObj.add(&quot;status&quot;, &quot;ACTIVE&quot;);
+expectedJsonObj.add(&quot;provider&quot;, providerJsonObj);
+log.info(&quot;Here is the expect JSON: &quot; + expectedJsonObj.toString());
+
+// Check for object equivalence
+JSONCompareResult compareResult = JSONCompare.compareJSON(expectedJsonObj.toString(), jsonActualResultString, JSONCompareMode.NON_EXTENSIBLE);
+if (compareResult.failed()) {
+	Failure = true;
+	FailureMessage = &quot;The result JSON does not match the expected JSON.\n&quot; + compareResult.getMessage();
+}
+
+${__setProperty(voiceDeviceUuid, ${deviceUuid})};</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST SMS device" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;deviceType&quot;:&quot;TEXT_PHONE&quot;,&#xd;
+    &quot;name&quot;:&quot; SMS Phone &quot;,&#xd;
+    &quot;phoneNumber&quot;: &quot; +16045581021 &quot;,&#xd;
+    &quot;provider&quot;: {&#xd;
+    		&quot;id&quot;:&quot; (x)matters SMS Gateway &quot;&#xd;
+    },&#xd;
+    &quot;owner&quot;: {&#xd;
+        &quot;id&quot;:&quot;${testuserid}&quot;&#xd;
+    },&#xd;
+    &quot;sequence&quot;: 1&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${basepath}/${apiversion}/devices</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - code 201" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49587">201</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract Owner UUID" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">ownerUuid</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;id&quot;:&quot;(.+?)&quot;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">&lt;owner_id&gt;</stringProp>
+            <stringProp name="RegexExtractor.match_number">2</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract Device UUID" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">deviceUuid</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;id&quot;:&quot;(.+?)&quot;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">&lt;device_uuid&gt;</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+            <stringProp name="BeanShellAssertion.query">import com.eclipsesource.json.*;
+import org.skyscreamer.jsonassert.*;
+
+String jsonString = prev.getResponseDataAsString();
+String deviceUuid = vars.get(&quot;deviceUuid&quot;);
+String ownerUuid = vars.get(&quot;ownerUuid&quot;);
+
+log.info(&quot;Starting initial POST assertions&quot;);
+
+// Grab output JSON and print out as a string
+JsonObject jsonObjResult = Json.parse(jsonString).asObject();
+String jsonActualResultString = jsonObjResult.toString();
+log.info(&quot;Here is the output JSON: &quot; + jsonActualResultString);
+
+// Build the expected &quot;ownerlink&quot; JSON object
+JsonObject ownerLinkJsonObj = new JsonObject();
+ownerLinkJsonObj.add(&quot;self&quot;, &quot;/api/xm/1/people/&quot;+ ownerUuid);
+
+// Build the expected &quot;owner&quot; JSON object
+JsonObject ownerJsonObj = new JsonObject();
+ownerJsonObj.add(&quot;id&quot;, ownerUuid);
+ownerJsonObj.add(&quot;links&quot;, ownerLinkJsonObj);
+
+// Build the expected &quot;selfLink&quot; JSON object
+JsonObject selfLinkJsonObj = new JsonObject();
+selfLinkJsonObj.add(&quot;self&quot;, &quot;/api/xm/1/devices/&quot;+ deviceUuid);
+
+// Build the expected &quot;provider&quot; JSON object
+JsonObject providerJsonObj = new JsonObject();
+providerJsonObj.add(&quot;id&quot;, &quot;(x)matters SMS Gateway&quot;);
+
+//Build the final expected JSON object
+JsonObject expectedJsonObj = new JsonObject();
+expectedJsonObj.add(&quot;id&quot;, deviceUuid);
+expectedJsonObj.add(&quot;name&quot;, &quot;SMS Phone&quot;);
+expectedJsonObj.add(&quot;phoneNumber&quot;, &quot;6045581021&quot;);
+expectedJsonObj.add(&quot;country&quot;, &quot;CA&quot;);
+expectedJsonObj.add(&quot;targetName&quot;, &quot;testuser|SMS Phone&quot;);
+expectedJsonObj.add(&quot;deviceType&quot;, &quot;TEXT_PHONE&quot;);
+expectedJsonObj.add(&quot;description&quot;, &quot;6045581021&quot;);
+expectedJsonObj.add(&quot;testStatus&quot;, &quot;UNTESTED&quot;);
+expectedJsonObj.add(&quot;externallyOwned&quot;, false);
+expectedJsonObj.add(&quot;defaultDevice&quot;, false);
+expectedJsonObj.add(&quot;priorityThreshold&quot;, &quot;LOW&quot;);
+expectedJsonObj.add(&quot;sequence&quot;, 1);
+expectedJsonObj.add(&quot;delay&quot;, 0);
+expectedJsonObj.add(&quot;owner&quot;, ownerJsonObj);
+expectedJsonObj.add(&quot;links&quot;, selfLinkJsonObj);
+expectedJsonObj.add(&quot;recipientType&quot;, &quot;DEVICE&quot;);
+expectedJsonObj.add(&quot;status&quot;, &quot;ACTIVE&quot;);
+expectedJsonObj.add(&quot;provider&quot;, providerJsonObj);
+log.info(&quot;Here is the expect JSON: &quot; + expectedJsonObj.toString());
+
+// Check for object equivalence
+JSONCompareResult compareResult = JSONCompare.compareJSON(expectedJsonObj.toString(), jsonActualResultString, JSONCompareMode.NON_EXTENSIBLE);
+if (compareResult.failed()) {
+	Failure = true;
+	FailureMessage = &quot;The result JSON does not match the expected JSON.\n&quot; + compareResult.getMessage();
+}
+
+${__setProperty(textPhoneDeviceUuid, ${deviceUuid})};</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DELETE SMS device" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${basepath}/${apiversion}/devices/${deviceUuid}</stringProp>
+          <stringProp name="HTTPSampler.method">DELETE</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - code 200" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+            <stringProp name="BeanShellAssertion.query">import com.eclipsesource.json.*;
+import org.skyscreamer.jsonassert.*;
+
+String jsonString = prev.getResponseDataAsString();
+String deviceUuid = vars.get(&quot;deviceUuid&quot;);
+String ownerUuid = vars.get(&quot;ownerUuid&quot;);
+
+log.info(&quot;Starting initial POST assertions&quot;);
+
+// Grab output JSON and print out as a string
+JsonObject jsonObjResult = Json.parse(jsonString).asObject();
+String jsonActualResultString = jsonObjResult.toString();
+log.info(&quot;Here is the output JSON: &quot; + jsonActualResultString);
+
+// Build the expected &quot;ownerlink&quot; JSON object
+JsonObject ownerLinkJsonObj = new JsonObject();
+ownerLinkJsonObj.add(&quot;self&quot;, &quot;/api/xm/1/people/&quot;+ ownerUuid);
+
+// Build the expected &quot;owner&quot; JSON object
+JsonObject ownerJsonObj = new JsonObject();
+ownerJsonObj.add(&quot;id&quot;, ownerUuid);
+ownerJsonObj.add(&quot;links&quot;, ownerLinkJsonObj);
+
+// Build the expected &quot;selfLink&quot; JSON object
+JsonObject selfLinkJsonObj = new JsonObject();
+selfLinkJsonObj.add(&quot;self&quot;, &quot;/api/xm/1/devices/&quot;+ deviceUuid);
+
+// Build the expected &quot;provider&quot; JSON object
+JsonObject providerJsonObj = new JsonObject();
+providerJsonObj.add(&quot;id&quot;, &quot;(x)matters SMS Gateway&quot;);
+
+//Build the final expected JSON object
+JsonObject expectedJsonObj = new JsonObject();
+expectedJsonObj.add(&quot;id&quot;, deviceUuid);
+expectedJsonObj.add(&quot;name&quot;, &quot;SMS Phone&quot;);
+expectedJsonObj.add(&quot;phoneNumber&quot;, &quot;6045581021&quot;);
+expectedJsonObj.add(&quot;country&quot;, &quot;CA&quot;);
+expectedJsonObj.add(&quot;targetName&quot;, &quot;testuser|SMS Phone&quot;);
+expectedJsonObj.add(&quot;deviceType&quot;, &quot;TEXT_PHONE&quot;);
+expectedJsonObj.add(&quot;description&quot;, &quot;6045581021&quot;);
+expectedJsonObj.add(&quot;testStatus&quot;, &quot;UNTESTED&quot;);
+expectedJsonObj.add(&quot;externallyOwned&quot;, false);
+expectedJsonObj.add(&quot;defaultDevice&quot;, false);
+expectedJsonObj.add(&quot;priorityThreshold&quot;, &quot;LOW&quot;);
+expectedJsonObj.add(&quot;sequence&quot;, 1);
+expectedJsonObj.add(&quot;delay&quot;, 0);
+expectedJsonObj.add(&quot;owner&quot;, ownerJsonObj);
+expectedJsonObj.add(&quot;links&quot;, selfLinkJsonObj);
+expectedJsonObj.add(&quot;recipientType&quot;, &quot;DEVICE&quot;);
+expectedJsonObj.add(&quot;status&quot;, &quot;ACTIVE&quot;);
+expectedJsonObj.add(&quot;provider&quot;, providerJsonObj);
+log.info(&quot;Here is the expect JSON: &quot; + expectedJsonObj.toString());
+
+// Check for object equivalence
+JSONCompareResult compareResult = JSONCompare.compareJSON(expectedJsonObj.toString(), jsonActualResultString, JSONCompareMode.NON_EXTENSIBLE);
+if (compareResult.failed()) {
+	Failure = true;
+	FailureMessage = &quot;The result JSON does not match the expected JSON.\n&quot; + compareResult.getMessage();
+}</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="ADD Group, shifts and members" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1461055955000</longProp>
+        <longProp name="ThreadGroup.end_time">1461055955000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Person" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;firstName&quot;: &quot;${firstName}&quot;,&#xd;
+  &quot;lastName&quot;: &quot;${lastName}&quot;,&#xd;
+  &quot;targetName&quot;: &quot;${firstName}${lastName}&quot;,&#xd;
+  &quot;roles&quot;: [&#xd;
+    &quot;Standard User&quot;&#xd;
+  ]&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/${basepath}/${apiversion}/people</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Store Person UUID" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">personUUID</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;id&quot;:&quot;(.+?)&quot;.&quot;targetName&quot;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">Oops</stringProp>
+            <stringProp name="RegexExtractor.match_number"></stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+            <stringProp name="BeanShellAssertion.query">${__setProperty(personUUID,${personUUID})}</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49587">201</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="JSON Assertion - Object Comparisons" enabled="true">
+            <stringProp name="BeanShellAssertion.query">import com.eclipsesource.json.*;
+import org.skyscreamer.jsonassert.*;
+
+String jsonString = prev.getResponseDataAsString();
+String storedId = vars.get(&quot;personUUID&quot;);
+String siteInfo = vars.get(&quot;defaultSiteData&quot;);
+String firstName = vars.get(&quot;firstName&quot;);
+String lastName = vars.get(&quot;lastName&quot;);
+String targetName = firstName + lastName;
+
+// Grab output JSON and print out as a string
+JsonObject resultPerson = Json.parse(jsonString).asObject();
+String resultText = resultPerson.toString();
+log.info(&quot;Here is the output JSON: &quot; + resultText);
+
+// Build the expected JSON and print it out as a string
+// First build the expectedSite object
+
+String siteLink = &quot;/api/xm/1/sites/&quot; + siteInfo;
+JsonObject siteLinkElement = new JsonObject();
+siteLinkElement.add(&quot;self&quot;, siteLink);
+
+JsonObject expectedSite = new JsonObject();
+expectedSite.add(&quot;id&quot;, siteInfo);
+expectedSite.add(&quot;links&quot;, siteLinkElement);
+
+String selfLink = &quot;/api/xm/1/people/&quot; + storedId;
+JsonObject linksElement = new JsonObject();
+linksElement.add(&quot;self&quot;, selfLink);
+
+JsonObject expectedPerson = new JsonObject();
+expectedPerson.add(&quot;id&quot;, storedId);
+expectedPerson.add(&quot;targetName&quot;, targetName);
+expectedPerson.add(&quot;recipientType&quot;, &quot;PERSON&quot;);
+expectedPerson.add(&quot;status&quot;, &quot;ACTIVE&quot;);
+expectedPerson.add(&quot;externallyOwned&quot;, false);
+expectedPerson.add(&quot;links&quot;, linksElement);
+expectedPerson.add(&quot;firstName&quot;, firstName);
+expectedPerson.add(&quot;lastName&quot;, lastName);
+expectedPerson.add(&quot;language&quot;, &quot;en&quot;);
+expectedPerson.add(&quot;timezone&quot;, &quot;Asia/Calcutta&quot;);
+expectedPerson.add(&quot;webLogin&quot;, targetName);
+expectedPerson.add(&quot;site&quot;, expectedSite);
+
+
+log.info(&quot;Here is the expect JSON: &quot; + expectedPerson.toString());
+
+// Check for object equivalence
+/*
+if (!expectedPerson.equals(resultPerson)) {
+	Failure = true;
+	FailureMessage = &quot;The result JSON does not match the expected JSON&quot;;	
+}
+*/
+JSONCompareResult result = JSONCompare.compareJSON(expectedPerson.toString(), resultText, JSONCompareMode.NON_EXTENSIBLE);
+if (result.failed()) {
+	Failure = true;
+	FailureMessage = &quot;The result JSON does not match the expected JSON.\n&quot; + result.getMessage();
+}</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET Person by uuid" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/${basepath}/${apiversion}/people/${personUUID}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - code 200" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+            <stringProp name="BeanShellAssertion.query">import com.eclipsesource.json.*;
+import org.skyscreamer.jsonassert.*;
+
+String jsonString = prev.getResponseDataAsString();
+String storedId = vars.get(&quot;personUUID&quot;);
+String siteInfo = vars.get(&quot;defaultSiteData&quot;);
+String firstName = vars.get(&quot;firstName&quot;);
+String lastName = vars.get(&quot;lastName&quot;);
+String targetName = firstName + lastName;
+
+// Grab output JSON and print out as a string
+JsonObject resultPerson = Json.parse(jsonString).asObject();
+String resultText = resultPerson.toString();
+log.info(&quot;Here is the output JSON: &quot; + resultText);
+
+// Build the expected JSON and print it out as a string
+// First build the expectedSite object
+
+String siteLink = &quot;/api/xm/1/sites/&quot; + siteInfo;
+JsonObject siteLinkElement = new JsonObject();
+siteLinkElement.add(&quot;self&quot;, siteLink);
+
+JsonObject expectedSite = new JsonObject();
+expectedSite.add(&quot;id&quot;, siteInfo);
+expectedSite.add(&quot;links&quot;, siteLinkElement);
+
+String selfLink = &quot;/api/xm/1/people/&quot; + storedId;
+JsonObject linksElement = new JsonObject();
+linksElement.add(&quot;self&quot;, selfLink);
+
+JsonObject expectedPerson = new JsonObject();
+expectedPerson.add(&quot;id&quot;, storedId);
+expectedPerson.add(&quot;targetName&quot;, targetName);
+expectedPerson.add(&quot;recipientType&quot;, &quot;PERSON&quot;);
+expectedPerson.add(&quot;status&quot;, &quot;ACTIVE&quot;);
+expectedPerson.add(&quot;externallyOwned&quot;, false);
+expectedPerson.add(&quot;links&quot;, linksElement);
+expectedPerson.add(&quot;firstName&quot;, firstName);
+expectedPerson.add(&quot;lastName&quot;, lastName);
+expectedPerson.add(&quot;language&quot;, &quot;en&quot;);
+expectedPerson.add(&quot;timezone&quot;, &quot;Asia/Calcutta&quot;);
+expectedPerson.add(&quot;webLogin&quot;, targetName);
+expectedPerson.add(&quot;site&quot;, expectedSite);
+
+
+log.info(&quot;Here is the expect JSON: &quot; + expectedPerson.toString());
+
+// Check for object equivalence
+JSONCompareResult result = JSONCompare.compareJSON(expectedPerson.toString(), resultText, JSONCompareMode.NON_EXTENSIBLE);
+if (result.failed()) {
+	Failure = true;
+	FailureMessage = &quot;The result JSON does not match the expected JSON.\n&quot; + result.getMessage();
+}</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST: UPDATE Person by uuid" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;firstName&quot;: &quot;${firstName}Edit&quot;,&#xd;
+  &quot;lastName&quot;: &quot;SonOf${lastName}&quot;,&#xd;
+  &quot;targetName&quot;: &quot;${firstName}${lastName}&quot;,&#xd;
+  &quot;roles&quot;: [&#xd;
+    &quot;Standard User&quot;&#xd;
+  ],&#xd;
+  &quot;id&quot;:&quot;${personUUID}&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/${basepath}/${apiversion}/people</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+            <stringProp name="BeanShellAssertion.query">import com.eclipsesource.json.*;
+import org.skyscreamer.jsonassert.*;
+
+String jsonString = prev.getResponseDataAsString();
+String storedId = vars.get(&quot;personUUID&quot;);
+String siteInfo = vars.get(&quot;defaultSiteData&quot;);
+String firstName = vars.get(&quot;firstName&quot;) + &quot;Edit&quot;;
+String lastName = &quot;SonOf&quot; + vars.get(&quot;lastName&quot;);
+String targetName = vars.get(&quot;firstName&quot;) + vars.get(&quot;lastName&quot;);
+
+// Grab output JSON and print out as a string
+JsonObject resultPerson = Json.parse(jsonString).asObject();
+String resultText = resultPerson.toString();
+log.info(&quot;Here is the output JSON: &quot; + resultText);
+
+// Build the expected JSON and print it out as a string
+// First build the expectedSite object
+
+String siteLink = &quot;/api/xm/1/sites/&quot; + siteInfo;
+JsonObject siteLinkElement = new JsonObject();
+siteLinkElement.add(&quot;self&quot;, siteLink);
+
+JsonObject expectedSite = new JsonObject();
+expectedSite.add(&quot;id&quot;, siteInfo);
+expectedSite.add(&quot;links&quot;, siteLinkElement);
+
+String selfLink = &quot;/api/xm/1/people/&quot; + storedId;
+JsonObject linksElement = new JsonObject();
+linksElement.add(&quot;self&quot;, selfLink);
+
+JsonObject expectedPerson = new JsonObject();
+expectedPerson.add(&quot;id&quot;, storedId);
+expectedPerson.add(&quot;targetName&quot;, targetName);
+expectedPerson.add(&quot;recipientType&quot;, &quot;PERSON&quot;);
+expectedPerson.add(&quot;status&quot;, &quot;ACTIVE&quot;);
+expectedPerson.add(&quot;externallyOwned&quot;, false);
+expectedPerson.add(&quot;links&quot;, linksElement);
+expectedPerson.add(&quot;firstName&quot;, firstName);
+expectedPerson.add(&quot;lastName&quot;, lastName);
+expectedPerson.add(&quot;language&quot;, &quot;en&quot;);
+expectedPerson.add(&quot;timezone&quot;, &quot;Asia/Calcutta&quot;);
+expectedPerson.add(&quot;webLogin&quot;, targetName);
+expectedPerson.add(&quot;site&quot;, expectedSite);
+
+
+log.info(&quot;Here is the expect JSON: &quot; + expectedPerson.toString());
+
+// Check for object equivalence
+JSONCompareResult result = JSONCompare.compareJSON(expectedPerson.toString(), resultText, JSONCompareMode.NON_EXTENSIBLE);
+if (result.failed()) {
+	Failure = true;
+	FailureMessage = &quot;The result JSON does not match the expected JSON.\n&quot; + result.getMessage();
+}</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Group" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;recipientType&quot;: &quot;GROUP&quot;,&#xd;
+&quot;status&quot;: &quot;ACTIVE&quot;,&#xd;
+&quot;targetName&quot;: &quot;${groupName}&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/${basepath}/${apiversion}/groups</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Store Group UUID" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">groupUUID</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;id&quot;:&quot;(.+?)&quot;.&quot;targetName&quot;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">Oops</stringProp>
+            <stringProp name="RegexExtractor.match_number"></stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - code 201" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49587">201</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response message Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1601759544">Created</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_message</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+            <stringProp name="BeanShellAssertion.query">import com.eclipsesource.json.*;
+import org.skyscreamer.jsonassert.*;
+
+String jsonString = prev.getResponseDataAsString();
+String storedId = vars.get(&quot;groupUUID&quot;);
+String siteInfo = vars.get(&quot;defaultSiteData&quot;);
+String groupName = vars.get(&quot;groupName&quot;);
+
+// Grab output JSON and print out as a string
+JsonObject resultGroup = Json.parse(jsonString).asObject();
+String resultText = resultGroup.toString();
+log.info(&quot;Here is the output JSON: &quot; + resultText);
+
+// Build the expected JSON and print it out as a string
+
+// Build self-ref link object
+JsonObject linksElement = new JsonObject();
+String selfLink = &quot;/api/xm/1/groups/&quot; + storedId;
+linksElement.add(&quot;self&quot;, selfLink);
+
+// Build site link object
+String siteLink = &quot;/api/xm/1/sites/&quot; + siteInfo;
+JsonObject siteLinkElement = new JsonObject();
+siteLinkElement.add(&quot;self&quot;, siteLink);
+
+JsonObject expectedSite = new JsonObject();
+expectedSite.add(&quot;id&quot;, siteInfo);
+expectedSite.add(&quot;links&quot;, siteLinkElement);
+
+//Build expectedGroup JSON Object
+JsonObject expectedGroup = new JsonObject();
+expectedGroup.add(&quot;id&quot;, storedId);
+expectedGroup.add(&quot;targetName&quot;, groupName);
+expectedGroup.add(&quot;recipientType&quot;, &quot;GROUP&quot;);
+expectedGroup.add(&quot;status&quot;, &quot;ACTIVE&quot;);
+expectedGroup.add(&quot;externallyOwned&quot;, false);
+// expectedGroup.add(&quot;timezone&quot;, &quot;US/Eastern&quot;);
+expectedGroup.add(&quot;links&quot;, linksElement);
+expectedGroup.add(&quot;observedByAll&quot;, true);
+expectedGroup.add(&quot;allowDuplicates&quot;, true);
+expectedGroup.add(&quot;useDefaultDevices&quot;, true);
+expectedGroup.add(&quot;site&quot;, expectedSite);
+log.info(&quot;Here is the expect JSON: &quot; + expectedGroup.toString());
+
+// Check for object equivalence
+JSONCompareResult result = JSONCompare.compareJSON(expectedGroup.toString(), resultText, JSONCompareMode.NON_EXTENSIBLE);
+if (result.failed()) {
+	Failure = true;
+	FailureMessage = &quot;The result JSON does not match the expected JSON.\n&quot; + result.getMessage();
+}</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Shift" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+	&quot;name&quot;:&quot; ZDU Testing &quot;&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${basepath}/${apiversion}/groups/${groupUUID}/shifts</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract Shift UUID" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">shiftUuid</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;id&quot;:&quot;(.+?)&quot;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">&lt;shift_uuid&gt;</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - code 201" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49587">201</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response message Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1601759544">Created</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_message</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="Validate the Addition of shift" enabled="true">
+            <stringProp name="BeanShellAssertion.query">import com.eclipsesource.json.*;
+import org.skyscreamer.jsonassert.*;
+
+String jsonString = prev.getResponseDataAsString();
+String shiftUuid = vars.get(&quot;shiftUuid&quot;);
+String groupUuid = vars.get(&quot;groupUUID&quot;);
+log.info(&quot;Starting initial POST assertions&quot;);
+
+// Grab output JSON and print out as a string
+JsonObject jsonObjResult = Json.parse(jsonString).asObject();
+String jsonActualResultString = jsonObjResult.toString();
+log.info(&quot;Here is the output JSON: &quot; + jsonActualResultString);
+
+// Build the group link object
+JsonObject groupLinkObj = new JsonObject();
+groupLinkObj.add(&quot;self&quot;, &quot;/${basepath}/${apiversion}/groups/&quot; + groupUuid);
+
+// Build the group object
+JsonObject groupObj = new JsonObject();
+groupObj.add(&quot;id&quot;, groupUuid);
+groupObj.add(&quot;links&quot;, groupLinkObj);
+
+//Build the link object
+JsonObject linkObj = new JsonObject();
+linkObj.add(&quot;self&quot;, &quot;/${basepath}/${apiversion}/groups/&quot; + groupUuid + &quot;/shifts/&quot; + shiftUuid);
+
+//Build the final expected JSON object
+JsonObject expectedJsonObj = new JsonObject();
+expectedJsonObj.add(&quot;id&quot;, shiftUuid);
+expectedJsonObj.add(&quot;name&quot;, &quot;ZDU Testing&quot;);
+expectedJsonObj.add(&quot;group&quot;, groupObj);
+expectedJsonObj.add(&quot;links&quot;, linkObj);
+log.info(&quot;Here is the expected JSON: &quot; + expectedJsonObj.toString());
+
+// Check for object equivalence
+JSONCompareResult compareResult = JSONCompare.compareJSON(expectedJsonObj.toString(), jsonActualResultString, JSONCompareMode.NON_EXTENSIBLE);
+if (compareResult.failed()) {
+	Failure = true;
+	FailureMessage = &quot;The result JSON does not match the expected JSON.\n&quot; + compareResult.getMessage();
+}
+</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST member" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+	&quot;recipient&quot;: {&#xd;
+&#xd;
+	&quot;id&quot;: &quot;${__property(personUUID)}&quot;,&#xd;
+	&quot;recipientType&quot;: &quot;PERSON&quot;&#xd;
+	}&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${basepath}/${apiversion}/groups/${groupUUID}/shifts/${shiftUuid}/members</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET Group Calendar" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/${basepath}/${apiversion}/groups/${groupUUID}/calendar</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - code 200" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract 24x7 Shift UUID" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">sUuid</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;id&quot;:&quot;(.+?)&quot;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">&lt;24*7_shift_uuid&gt;</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="JSON Assertion on GET calendar" enabled="true">
+            <stringProp name="BeanShellAssertion.query">import com.eclipsesource.json.*;
+import org.skyscreamer.jsonassert.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+String jsonString = prev.getResponseDataAsString();
+String groupUuid = vars.get(&quot;groupUUID&quot;);
+String shiftUuid = vars.get(&quot;shiftUuid&quot;);
+String sUuid = vars.get(&quot;sUuid&quot;);
+log.info(&quot;Starting initial assertions&quot;);
+
+// Grab output JSON and print out as a string
+JsonObject jsonObjResult = Json.parse(jsonString).asObject();
+String jsonActualResultString = jsonObjResult.toString();
+log.info(&quot;Here is the output JSON: &quot; + jsonActualResultString);
+
+JsonObject shiftLinkObj = new JsonObject();
+shiftLinkObj.add(&quot;self&quot;, &quot;/${basepath}/${apiversion}/groups/&quot; + groupUuid + &quot;/shifts/&quot; + sUuid);
+
+JsonObject shiftObj = new JsonObject();
+shiftObj.add(&quot;id&quot;, sUuid);
+shiftObj.add(&quot;links&quot;, shiftLinkObj);
+
+//JsonObject memberObj = new JsonObject();
+
+JsonArray memberData = new JsonArray();
+
+JsonObject memberLink = new JsonObject();
+memberLink.add(&quot;self&quot;, &quot;/groups/&quot; + groupUuid + &quot;/shifts/&quot; + sUuid + &quot;?offset=0&amp;limit=100&quot;);
+
+JsonObject memberObj = new JsonObject();
+memberObj.add(&quot;count&quot;, 0);
+memberObj.add(&quot;total&quot;, 0);
+memberObj.add(&quot;data&quot;, memberData);
+memberObj.add(&quot;links&quot;, memberLink);
+
+DateFormat dateFormat = new SimpleDateFormat(&quot;YYYY-MM-dd&quot;);
+Calendar cal = Calendar.getInstance();
+cal.add(Calendar.DAY_OF_MONTH, -1);
+String today = dateFormat.format(cal.getTime());
+cal.add(Calendar.DAY_OF_MONTH, 1);
+String tomorrow = dateFormat.format(cal.getTime());
+
+JsonObject dataObj1 = new JsonObject();
+dataObj1.add(&quot;start&quot;, today + &quot;T18:30:00Z&quot;);
+dataObj1.add(&quot;end&quot;, tomorrow + &quot;T18:30:00Z&quot;);
+dataObj1.add(&quot;shift&quot;, shiftObj);
+dataObj1.add(&quot;members&quot;, memberObj);
+
+//second shift
+
+JsonObject shiftLinkObj2 = new JsonObject();
+shiftLinkObj2.add(&quot;self&quot;, &quot;/${basepath}/${apiversion}/groups/&quot; + groupUuid + &quot;/shifts/&quot; + shiftUuid);
+
+JsonObject shiftObj2 = new JsonObject();
+shiftObj2.add(&quot;id&quot;, shiftUuid);
+shiftObj2.add(&quot;links&quot;, shiftLinkObj2);
+
+JsonObject memberSiteLinkObj1 = new JsonObject();
+memberSiteLinkObj1.add(&quot;self&quot;, &quot;/${basepath}/${apiversion}/sites/${defaultSiteData}&quot;);
+
+JsonObject siteObj1 = new JsonObject();
+siteObj1.add(&quot;id&quot;, &quot;${defaultSiteData}&quot;);
+siteObj1.add(&quot;links&quot;, memberSiteLinkObj1);
+
+JsonObject memberSelfLinkObj1 = new JsonObject();
+memberSelfLinkObj1.add(&quot;self&quot;, &quot;/${basepath}/${apiversion}/people/${personUUID}&quot;);
+
+JsonObject memberDetails1 = new JsonObject();
+memberDetails1.add(&quot;id&quot;, &quot;${personUUID}&quot;);
+memberDetails1.add(&quot;targetName&quot;, &quot;${firstName}${lastName}&quot;);
+memberDetails1.add(&quot;recipientType&quot;, &quot;PERSON&quot;);
+memberDetails1.add(&quot;externallyOwned&quot;, false);
+memberDetails1.add(&quot;links&quot;, memberSelfLinkObj1);
+memberDetails1.add(&quot;firstName&quot;, &quot;${firstName}&quot;);
+memberDetails1.add(&quot;lastName&quot;, &quot;${lastName}&quot;);
+memberDetails1.add(&quot;language&quot;, &quot;en&quot;);
+memberDetails1.add(&quot;timezone&quot;, &quot;Asia/Calcutta&quot;);
+memberDetails1.add(&quot;webLogin&quot;, &quot;${firstName}${lastName}&quot;);
+memberDetails1.add(&quot;site&quot;, siteObj1);
+memberDetails1.add(&quot;status&quot;, &quot;ACTIVE&quot;);
+	
+JsonObject memberObj1 = new JsonObject();
+memberObj1.add(&quot;position&quot;, 1);
+memberObj1.add(&quot;delay&quot;, 0);
+memberObj1.add(&quot;member&quot;, memberDetails1);
+
+JsonArray memberData2 = new JsonArray();
+memberData2.add(memberObj1);
+
+JsonObject memberLink2 = new JsonObject();
+memberLink2.add(&quot;self&quot;, &quot;/groups/&quot; + groupUuid + &quot;/shifts/&quot; + shiftUuid + &quot;?offset=0&amp;limit=100&quot;);
+
+JsonObject memberObj2 = new JsonObject();
+memberObj2.add(&quot;count&quot;, 1);
+memberObj2.add(&quot;total&quot;, 1);
+memberObj2.add(&quot;data&quot;, memberData2);
+memberObj2.add(&quot;links&quot;, memberLink2);
+
+DateFormat dateFormat = new SimpleDateFormat(&quot;YYYY-MM-dd&quot;);
+Calendar cal = Calendar.getInstance();
+cal.add(Calendar.DAY_OF_MONTH, -1);
+String today = dateFormat.format(cal.getTime());
+cal.add(Calendar.DAY_OF_MONTH, 1);
+String tomorrow = dateFormat.format(cal.getTime());
+
+JsonObject dataObj2 = new JsonObject();
+dataObj2.add(&quot;start&quot;, today + &quot;T18:30:00Z&quot;);
+dataObj2.add(&quot;end&quot;, tomorrow + &quot;T18:30:00Z&quot;);
+dataObj2.add(&quot;shift&quot;, shiftObj2);
+dataObj2.add(&quot;members&quot;, memberObj2);
+
+
+JsonArray dataArray = new JsonArray();
+dataArray.add(dataObj1);
+dataArray.add(dataObj2);
+
+// Build the expected &quot;selfLink&quot; JSON object
+JsonObject selfLinkJsonObj = new JsonObject();
+selfLinkJsonObj.add(&quot;self&quot;, &quot;/${basepath}/${apiversion}/groups/&quot; + groupUuid + &quot;/calendar?offset=0&amp;limit=100&quot;);
+
+//Build the final expected JSON object
+JsonObject expectedJsonObj = new JsonObject();
+expectedJsonObj.add(&quot;count&quot;, 2);
+expectedJsonObj.add(&quot;total&quot;, 2);
+expectedJsonObj.add(&quot;data&quot;, dataArray);
+expectedJsonObj.add(&quot;links&quot;, selfLinkJsonObj);
+log.info(&quot;Here is the expected JSON: &quot; + expectedJsonObj.toString());
+
+// Check for object equivalence
+JSONCompareResult compareResult = JSONCompare.compareJSON(expectedJsonObj.toString(), jsonActualResultString, JSONCompareMode.NON_EXTENSIBLE);
+if (compareResult.failed()) {
+	Failure = true;
+	FailureMessage = &quot;The result JSON does not match the expected JSON.\n&quot; + compareResult.getMessage();
+}</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Comm Plan - Mobile API" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;properties&quot;: {&#xd;
+    &quot;Priority&quot;: &quot;P1&quot;,&#xd;
+    &quot;Incident Number&quot;: &quot;1&quot;,&#xd;
+    &quot;Date / Time Raised&quot;: &quot;15/04/2016 @  16:00&quot;,&#xd;
+    &quot;Service Affected&quot;: [&#xd;
+      &quot;ADRMS&quot;&#xd;
+    ],&#xd;
+    &quot;Type of Notification&quot;: &quot;NEW&quot;,&#xd;
+    &quot;Incident Status&quot;: &quot;In Progress&quot;,&#xd;
+    &quot;Incident Description&quot;: &quot;Incident  Occured&quot;,&#xd;
+    &quot;Impact&quot;: &quot;Impact Is high&quot;,&#xd;
+    &quot;Current Actions&quot;: &quot;In Progress&quot;,&#xd;
+    &quot;Next Update&quot;: &quot;Next update on significant change&quot;,&#xd;
+    &quot;Update time&quot;: &quot;10&quot;,&#xd;
+    &quot;Senders Initials&quot;: &quot;CM MIM&quot;&#xd;
+  },&#xd;
+  &quot;recipients&quot;: [&#xd;
+    {&#xd;
+      &quot;targetName&quot;: &quot;${groupName}&quot;&#xd;
+    }&#xd;
+  ]&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/mobile/1/engines/${engineName}/${formName}?_authCompanyName=benchmark</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - code 200" enabled="true">
+            <collectionProp name="Asserion.test_strings"/>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DELETE created person" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/${basepath}/${apiversion}/people/${__property(personUUID)}</stringProp>
+          <stringProp name="HTTPSampler.method">DELETE</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - code 200" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DELETE group" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/${basepath}/${apiversion}/groups/${groupUUID}</stringProp>
+          <stringProp name="HTTPSampler.method">DELETE</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - code 200" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>false</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <threadCounts>true</threadCounts>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

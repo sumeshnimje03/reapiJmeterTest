@@ -1,0 +1,806 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.8" jmeter="2.13 r1665067">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="ZDU Automation" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Environment Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="protocol" elementType="Argument">
+            <stringProp name="Argument.name">protocol</stringProp>
+            <stringProp name="Argument.value">${__property(protocol,,https)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="host" elementType="Argument">
+            <stringProp name="Argument.name">host</stringProp>
+            <stringProp name="Argument.value">${__property(host,,benchmark.staging.tst.xmatters.com)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="username" elementType="Argument">
+            <stringProp name="Argument.name">username</stringProp>
+            <stringProp name="Argument.value">${__property(username,,admin)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="password" elementType="Argument">
+            <stringProp name="Argument.name">password</stringProp>
+            <stringProp name="Argument.value">${__property(password,,complex)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="port" elementType="Argument">
+            <stringProp name="Argument.name">port</stringProp>
+            <stringProp name="Argument.value">${__property(port,,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="timeout_ms" elementType="Argument">
+            <stringProp name="Argument.name">timeout_ms</stringProp>
+            <stringProp name="Argument.value">${__property(timeout_ms,,20000)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="version" elementType="Argument">
+            <stringProp name="Argument.name">version</stringProp>
+            <stringProp name="Argument.value">${__property(version,,2015-04-01)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="formuuid" elementType="Argument">
+            <stringProp name="Argument.name">formuuid</stringProp>
+            <stringProp name="Argument.value">${__property(formuuid,,1e270d92-19a2-495c-b456-085e72807c03)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+        <collectionProp name="AuthManager.auth_list">
+          <elementProp name="" elementType="Authorization">
+            <stringProp name="Authorization.url">${protocol}://${host}</stringProp>
+            <stringProp name="Authorization.username">${username}</stringProp>
+            <stringProp name="Authorization.password">${password}</stringProp>
+            <stringProp name="Authorization.domain"></stringProp>
+            <stringProp name="Authorization.realm"></stringProp>
+          </elementProp>
+        </collectionProp>
+      </AuthManager>
+      <hashTree/>
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+        <collectionProp name="HeaderManager.headers">
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">content-type</stringProp>
+            <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">User-Agent</stringProp>
+            <stringProp name="Header.value">xMatters/535.0.10 CFNetwork/672.1.15 Darwin/14.0.0</stringProp>
+          </elementProp>
+        </collectionProp>
+      </HeaderManager>
+      <hashTree/>
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments"/>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">${host}</stringProp>
+        <stringProp name="HTTPSampler.port">${port}</stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout">${timeout_ms}</stringProp>
+        <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+        <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+        <stringProp name="HTTPSampler.path"></stringProp>
+        <stringProp name="HTTPSampler.implementation">HttpClient3.1</stringProp>
+        <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+      </ConfigTestElement>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="TriggerCommunicationPlan" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1460714370000</longProp>
+        <longProp name="ThreadGroup.end_time">1460714370000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POSTCommunicationPlan" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;properties&quot;: {&#xd;
+    &quot;Priority&quot;: &quot;P1&quot;,&#xd;
+    &quot;Incident Number&quot;: &quot;1&quot;,&#xd;
+    &quot;Date / Time Raised&quot;: &quot;15/04/2016 @  16:00&quot;,&#xd;
+    &quot;Service Affected&quot;: [&#xd;
+      &quot;ADRMS&quot;&#xd;
+    ],&#xd;
+    &quot;Type of Notification&quot;: &quot;NEW&quot;,&#xd;
+    &quot;Incident Status&quot;: &quot;In Progress&quot;,&#xd;
+    &quot;Incident Description&quot;: &quot;Incident  Occured&quot;,&#xd;
+    &quot;Impact&quot;: &quot;Impact Is high&quot;,&#xd;
+    &quot;Current Actions&quot;: &quot;In Progress&quot;,&#xd;
+    &quot;Next Update&quot;: &quot;Next update on significant change&quot;,&#xd;
+    &quot;Update time&quot;: &quot;10&quot;,&#xd;
+    &quot;Senders Initials&quot;: &quot;CM MIM&quot;&#xd;
+  },&#xd;
+  &quot;recipients&quot;: [&#xd;
+    {&#xd;
+      &quot;targetName&quot;: &quot;Engineering Support&quot;&#xd;
+    }&#xd;
+  ]&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/reapi/${version}/forms/${formuuid}/triggers</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="true">
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.protocol.http.util.Base64Encoder;
+import org.apache.jmeter.protocol.http.control.Header;
+
+//Override auth header with invalid value
+sampler.getHeaderManager().removeHeaderNamed(&quot;Authorization&quot;);
+String encodedCredentials = Base64Encoder.encode(&quot;admin:complex&quot;);
+log.info(&quot;Encoded creds: &quot; + encodedCredentials);
+sampler.getHeaderManager().add(new Header(&quot;Authorization&quot;, &quot;Basic &quot; + encodedCredentials));</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">EventID</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;id&quot;:&quot;(.+?)&quot;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">OOps</stringProp>
+            <stringProp name="RegexExtractor.match_number"></stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="1271730265">X-Rate-Limit-Org-Name: benchmark</stringProp>
+              <stringProp name="1550014424">X-Rate-Limit-Resource: FormEventPost</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_headers</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GETTrackingReport" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/reapi/2012-03-01/events/${EventID}/tracking</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="elapsedTimeInMs" enabled="false">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">elapsedTimeInMs</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;elapsedTimeInMs&quot;:&quot;(.+?)&quot;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default"></stringProp>
+            <stringProp name="RegexExtractor.match_number"></stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="startDateTime" enabled="false">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">startDateTime</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;startDateTime&quot;:&quot;(.+?)&quot;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default"></stringProp>
+            <stringProp name="RegexExtractor.match_number"></stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="endDateTime" enabled="false">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">endDateTime</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;endDateTime&quot;:&quot;(.+?)&quot;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default"></stringProp>
+            <stringProp name="RegexExtractor.match_number"></stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="lastAuditEventProcessed" enabled="false">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">lastAuditEventProcessed</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;lastAuditEventProcessed&quot;:&quot;(.+?)&quot;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default"></stringProp>
+            <stringProp name="RegexExtractor.match_number"></stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="false">
+            <stringProp name="BeanShellAssertion.query">import com.eclipsesource.json.*;
+import org.skyscreamer.jsonassert.*;
+import java.util.*; 
+String jsonString = prev.getResponseDataAsString();
+
+// Grab output JSON and print out as a string
+
+JsonObject resultEvents = Json.parse(jsonString).asObject();
+String resultText = resultEvents.toString();
+log.info(&quot;Here is the output JSON: &quot; + resultText);
+
+// Build the expected JSON and print it out as a string
+
+//Jason object for group1
+JsonObject eventTimelineStats = new JsonObject();
+eventTimelineStats.add(&quot;eventStatus&quot;, &quot;ACTIVE&quot;);
+eventTimelineStats.add(&quot;terminatedMs&quot;, &quot;0&quot;);
+eventTimelineStats.add(&quot;elapsedTimeInMs&quot;, &quot;${elapsedTimeInMs}&quot;);
+eventTimelineStats.add(&quot;startDateTime&quot;, &quot;${startDateTime}&quot;);
+eventTimelineStats.add(&quot;endDateTime&quot;, &quot;${endDateTime}&quot;);
+
+//Jason object for group2
+JsonObject eventUserDeliveryStats = new JsonObject();
+eventUserDeliveryStats.add(&quot;eventStatus&quot;,&quot;ACTIVE&quot;);
+eventUserDeliveryStats.add(&quot;totalUniqueUser&quot;,&quot;3&quot;);
+eventUserDeliveryStats.add(&quot;uniqueUserPending&quot;,&quot;0&quot;);
+eventUserDeliveryStats.add(&quot;uniqueUserDelivered&quot;,&quot;0&quot;);
+eventUserDeliveryStats.add(&quot;uniqueUserResponded&quot;,&quot;3&quot;);
+eventUserDeliveryStats.add(&quot;uniqueUserFailed&quot;,&quot;0&quot;);
+
+//json object for group3
+JsonObject eventResponseStats = new JsonObject();
+//String[] obj = {&quot;No Response&quot;, &quot;stop Notifying user&quot;, &quot;Record response&quot;};
+/*eventResponseStats.put(&quot;responses&quot;, (Object)obj);
+eventResponseStats.add(&quot;responses&quot;,&quot;No Response&quot;);
+eventResponseStats.add(&quot;responses&quot;,&quot;stop Notifying user&quot;);
+eventResponseStats.add(&quot;responses&quot;,&quot;Record response&quot;);
+**/
+List responses = new ArrayList();
+responses.add(&quot;No Response&quot;);
+responses.add(&quot;stop Notifying user&quot;);
+responses.add(&quot;Record response&quot;);
+eventResponseStats.add(responses);
+//eventResponseStats.add(&quot;counts&quot;,&quot;0&quot;);
+//eventResponseStats.add(&quot;counts&quot;,&quot;0&quot;);
+//eventResponseStats.add(&quot;counts&quot;,&quot;0&quot;);
+//eventResponseStats.add(&quot;contribution&quot;,&quot;NEUTRAL&quot;);
+//eventResponseStats.add(&quot;contribution&quot;,&quot;NONE&quot;);
+//eventResponseStats.add(&quot;contribution&quot;,&quot;NONE&quot;);
+
+// BVuild the expected object
+JsonObject expectedEventStats = new JsonObject();
+expectedEventStats.add(&quot;lastAuditEventProcessed&quot;, &quot;${lastAuditEventProcessed}&quot;);
+expectedEventStats.add(&quot;refreshNeeded&quot;, &quot;true&quot;);
+expectedEventStats.add(eventTimelineStats);
+expectedEventStats.add(eventUserDeliveryStats);
+expectedEventStats.add(eventResponseStats);
+expectedEventStats.add(&quot;hasResponses&quot;, &quot;true&quot;);
+
+//log.info(&quot;Here is the expect JSON: &quot; + expectedeventUserDeliveryStats.toString());
+
+// Check for object equivalence
+JSONCompareResult result = JSONCompare.compareJSON(expectedEventStats.toString(), resultText, JSONCompareMode.NON_EXTENSIBLE);
+if (result.failed()) {
+	Failure = true;
+	FailureMessage = &quot;The result JSON does not match the expected JSON.\n&quot; + result.getMessage();
+}</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="uniqueUserResponded Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="244295268">&quot;uniqueUserResponded&quot;:2</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="totalUniqueUser Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="1741557982">&quot;totalUniqueUser&quot;:4</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">65000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GETAlerts" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/reapi/2015-01-01/alerts</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="true">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="script">import org.apache.jmeter.protocol.http.util.Base64Encoder;
+import org.apache.jmeter.protocol.http.control.Header;
+
+//Override auth header with invalid value
+sampler.getHeaderManager().removeHeaderNamed(&quot;Authorization&quot;);
+String encodedCredentials = Base64Encoder.encode(&quot;mfinkle:test&quot;);
+log.info(&quot;Encoded creds: &quot; + encodedCredentials);
+sampler.getHeaderManager().add(new Header(&quot;Authorization&quot;, &quot;Basic &quot; + encodedCredentials));</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+          <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="script">import com.eclipsesource.json.*;
+import org.skyscreamer.jsonassert.*;
+import org.org.apache.jmeter.*;
+import java.util.*;
+
+
+String jsonString = prev.getResponseDataAsString();
+
+log.info(&quot;Here is the output JSON: &quot; + jsonString);
+
+JsonArray jsonArray = JsonArray.readFrom(jsonString);
+
+String alertid = jsonArray.get(0).get(&quot;id&quot;).toString();
+
+//int alertid = jsonArray.get(0).get(&quot;id&quot;).asInt();
+
+log.info(&quot;alertId value : &quot; + alertid);
+
+vars.put(&quot;alertid1&quot;, alertid);
+
+//props.put(&quot;alertid&quot;,vars.get(&quot;alertid&quot;));
+
+log.info(&quot;JSON array object: &quot; + jsonArray.toString());
+
+log.info(&quot;First JSON object: &quot; + jsonArray.get(0).toString());
+
+log.info(&quot;VAlue of ID : &quot; + jsonArray.get(0).get(&quot;id&quot;).toString());
+
+
+
+
+
+</stringProp>
+          </BeanShellPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POSTResponse" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;alertId&quot;:&quot;${alertid1}&quot;,&#xd;
+&quot;annotation&quot;:null,&#xd;
+&quot;deviceType&quot;:&quot;ANDROID_PUSH&quot;,&#xd;
+&quot;responseCode&quot;:&quot;stop Notifying user&quot;,&#xd;
+&quot;userName&quot;:&quot;mfinkle&quot;,&#xd;
+&quot;deviceName&quot;:&quot;ANDROID_PUSH&quot;&#xd;
+}&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/reapi/${version}/alerts/${alertid1}/responses</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="true">
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.protocol.http.util.Base64Encoder;
+import org.apache.jmeter.protocol.http.control.Header;
+
+//Override auth header with invalid value
+sampler.getHeaderManager().removeHeaderNamed(&quot;Authorization&quot;);
+String encodedCredentials = Base64Encoder.encode(&quot;mfinkle:test&quot;);
+log.info(&quot;Encoded creds: &quot; + encodedCredentials);
+sampler.getHeaderManager().add(new Header(&quot;Authorization&quot;, &quot;Basic &quot; + encodedCredentials));</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response code Assertion --code 201" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49587">201</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response message Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1601759544">Created</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_message</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">10000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POSTResponseAgain" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;alertId&quot;:&quot;${alertid1}&quot;,&#xd;
+&quot;annotation&quot;:null,&#xd;
+&quot;deviceType&quot;:&quot;ANDROID_PUSH&quot;,&#xd;
+&quot;responseCode&quot;:&quot;stop Notifying user&quot;,&#xd;
+&quot;userName&quot;:&quot;mfinkle&quot;,&#xd;
+&quot;deviceName&quot;:&quot;ANDROID_PUSH&quot;&#xd;
+}&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/reapi/${version}/alerts/${alertid1}/responses</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="PreProcessor - Modify Authorization" enabled="true">
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.protocol.http.util.Base64Encoder;
+import org.apache.jmeter.protocol.http.control.Header;
+
+//Override auth header with invalid value
+sampler.getHeaderManager().removeHeaderNamed(&quot;Authorization&quot;);
+String encodedCredentials = Base64Encoder.encode(&quot;mfinkle:test&quot;);
+log.info(&quot;Encoded creds: &quot; + encodedCredentials);
+sampler.getHeaderManager().add(new Header(&quot;Authorization&quot;, &quot;Basic &quot; + encodedCredentials));</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - code 409" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="51517">409</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response message Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-515403790">Conflict</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_message</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="Assertion - conflict" enabled="true">
+            <stringProp name="BeanShellAssertion.query">import com.eclipsesource.json.*;
+import org.skyscreamer.jsonassert.*;
+String jsonString = prev.getResponseDataAsString();
+
+// Grab output JSON and print out as a string
+
+JsonObject responseBody = Json.parse(jsonString).asObject();
+String resultText = responseBody.toString();
+log.info(&quot;Here is the output JSON: &quot; + resultText);
+
+//// Build the expected JSON and print it out as a string
+JsonObject expectedResult = new JsonObject();
+expectedResult.add(&quot;type&quot;, &quot;CONFLICT_ERROR&quot;);
+expectedResult.add(&quot;message&quot;, &quot;You have already responded to the message with \&quot;stop Notifying user\&quot;.&quot;);
+
+log.info(&quot;Here is the expect JSON: &quot; + expectedResult.toString());
+
+// Check for object equivalence
+JSONCompareResult result = JSONCompare.compareJSON(expectedResult.toString(), resultText, JSONCompareMode.NON_EXTENSIBLE);
+if (result.failed()) {
+	Failure = true;
+	FailureMessage = &quot;The result JSON does not match the expected JSON.\n&quot; + result.getMessage();
+}</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">10000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GETAlertsSubscriptionUser" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/reapi/2015-01-01/alerts</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="PreProcessor - Modify Authorization" enabled="true">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="script">import org.apache.jmeter.protocol.http.util.Base64Encoder;
+import org.apache.jmeter.protocol.http.control.Header;
+
+//Override auth header with invalid value
+sampler.getHeaderManager().removeHeaderNamed(&quot;Authorization&quot;);
+String encodedCredentials = Base64Encoder.encode(&quot;jkirk:test&quot;);
+log.info(&quot;Encoded creds: &quot; + encodedCredentials);
+sampler.getHeaderManager().add(new Header(&quot;Authorization&quot;, &quot;Basic &quot; + encodedCredentials));</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+          <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname=" Extract subscription Alertid" enabled="true">
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="script">import com.eclipsesource.json.*;
+import org.skyscreamer.jsonassert.*;
+import org.org.apache.jmeter.*;
+import java.util.*;
+
+
+String jsonString = prev.getResponseDataAsString();
+
+log.info(&quot;Here is the output JSON: &quot; + jsonString);
+
+JsonArray jsonArray = JsonArray.readFrom(jsonString);
+
+String alertid = jsonArray.get(0).get(&quot;id&quot;).toString();
+
+//int alertid = jsonArray.get(0).get(&quot;id&quot;).asInt();
+
+log.info(&quot;alertId value : &quot; + alertid);
+
+vars.put(&quot;alertid2&quot;, alertid);
+
+//props.put(&quot;alertid&quot;,vars.get(&quot;alertid&quot;));
+
+log.info(&quot;JSON array object: &quot; + jsonArray.toString());
+
+log.info(&quot;First JSON object: &quot; + jsonArray.get(0).toString());
+
+log.info(&quot;VAlue of ID : &quot; + jsonArray.get(0).get(&quot;id&quot;).toString());
+
+
+
+
+
+</stringProp>
+          </BeanShellPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POSTResponseSubscription" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;alertId&quot;:&quot;${alertid2}&quot;,&#xd;
+&quot;annotation&quot;:null,&#xd;
+&quot;deviceType&quot;:&quot;ANDROID_PUSH&quot;,&#xd;
+&quot;responseCode&quot;:&quot;stop Notifying user&quot;,&#xd;
+&quot;userName&quot;:&quot;mfinkle&quot;,&#xd;
+&quot;deviceName&quot;:&quot;ANDROID_PUSH&quot;&#xd;
+}&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/reapi/${version}/alerts/${alertid2}/responses</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="true">
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.protocol.http.util.Base64Encoder;
+import org.apache.jmeter.protocol.http.control.Header;
+
+//Override auth header with invalid value
+sampler.getHeaderManager().removeHeaderNamed(&quot;Authorization&quot;);
+String encodedCredentials = Base64Encoder.encode(&quot;jkirk:test&quot;);
+log.info(&quot;Encoded creds: &quot; + encodedCredentials);
+sampler.getHeaderManager().add(new Header(&quot;Authorization&quot;, &quot;Basic &quot; + encodedCredentials));</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - code 201" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49587">201</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response message Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1601759544">Created</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_message</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">10000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>false</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <threadCounts>true</threadCounts>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
